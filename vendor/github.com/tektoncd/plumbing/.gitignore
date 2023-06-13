@@ -10,3 +10,6 @@
 
 # Virtualenv files
 .venv
+
+**/.bin
+**/.DS_Store

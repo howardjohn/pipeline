@@ -337,7 +337,13 @@ func (s *state) callTRFunc(f, v reflect.Value, step Transform) reflect.Value {
 		if step.vx, step.vy = want, want; !s.statelessCompare(step).Equal() {
 			return want
 		}
-		panic(fmt.Sprintf("non-deterministic function detected: %s", function.NameOf(f)))
+		step.vx, step.vy = got, want;
+		s1 := s.statelessCompare(step)
+		step.vx, step.vy = want, want;
+		s2 := s.statelessCompare(step)
+		x := got.Interface()
+		y := want.Interface()
+		panic(fmt.Sprintf("non-deterministic function detected: %s %+v %+v\n%+v\n%+v", function.NameOf(f), s1, s2, x, y))
 	}
 	return want
 }
@@ -647,6 +653,7 @@ type dynChecker struct{ curr, next int }
 // This sequence ensures that the cost of checks drops significantly as
 // the number of functions calls grows larger.
 func (dc *dynChecker) Next() bool {
+	return true
 	ok := dc.curr == dc.next
 	if ok {
 		dc.curr = 0
