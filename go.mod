@@ -33,7 +33,7 @@ require (
 	k8s.io/client-go v0.27.2
 	k8s.io/code-generator v0.27.2
 	k8s.io/klog v1.0.0
-	k8s.io/kube-openapi v0.0.0-20230606174411-725288a7abf1
+	k8s.io/kube-openapi v0.0.0-20230515203736-54b630e78af5
 	knative.dev/pkg v0.0.0-20230612155445-74c4be5e935e
 	sigs.k8s.io/yaml v1.3.0
 )
@@ -87,7 +87,6 @@ require (
 	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/gnostic v0.6.9 // indirect
-	github.com/google/gnostic-models v0.6.8 // indirect
 	github.com/google/go-containerregistry/pkg/authn/kubernetes v0.0.0-20230516205744-dbecb1de8cfa // indirect
 	github.com/google/s2a-go v0.1.3 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect

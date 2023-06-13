@@ -50,7 +50,6 @@ func init() {
 	injection.Default.RegisterClientFetcher(func(ctx context.Context) interface{} {
 		return Get(ctx)
 	})
-	injection.Dynamic.RegisterDynamicClient(withClientFromDynamic)
 }
 
 // Key is used as the key for associating information with a context.Context.
@@ -58,10 +57,6 @@ type Key struct{}
 
 func withClientFromConfig(ctx context.Context, cfg *rest.Config) context.Context {
 	return context.WithValue(ctx, Key{}, versioned.NewForConfigOrDie(cfg))
-}
-
-func withClientFromDynamic(ctx context.Context) context.Context {
-	return context.WithValue(ctx, Key{}, &wrapClient{dyn: dynamicclient.Get(ctx)})
 }
 
 // Get extracts the versioned.Interface client from the context.
