@@ -1311,7 +1311,7 @@ func TestGetTaskFunc_GetFuncError(t *testing.T) {
 			name:        "get error when oci bundle return error",
 			requester:   requesterUnsigned,
 			taskrun:     *trBundleError,
-			expectedErr: fmt.Errorf(`failed to get keychain: serviceaccounts "default" not found`),
+			expectedErr: fmt.Errorf(`GET https://index.docker.io/v2/library/bundle/manifests/latest: UNAUTHORIZED: authentication required; [map[Action:pull Class: Name:library/bundle Type:repository]]`),
 		},
 		{
 			name:        "get error when remote resolution return error",
